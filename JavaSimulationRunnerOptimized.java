@@ -7,7 +7,7 @@ import java.awt.event.MouseAdapter;
 
 public class JavaSimulationRunnerOptimized extends Canvas{
     double gravityx = 0;
-    double gravityy = 0;
+    double gravityy = 9;
     double gravity = 1;
     double cX = 500;
     double cY = 500;
