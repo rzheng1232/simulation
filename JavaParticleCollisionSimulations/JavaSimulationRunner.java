@@ -1,4 +1,4 @@
-
+package JavaParticleCollisionSimulations;
 import java.awt.*;
 
 import java.awt.event.*;

@@ -4,8 +4,8 @@ import random
 import sys
 
 pygame.init()
-
-WIDTH, HEIGHT = 600, 600  # Screen dimensions
+# Be careful, no way to exit once program starts
+WIDTH, HEIGHT = 1600, 1600  # Screen dimensions
 CELL_SIZE = 1  # Size of each cell
 GRID_WIDTH = WIDTH // CELL_SIZE
 GRID_HEIGHT = HEIGHT // CELL_SIZE
@@ -19,7 +19,8 @@ init_pixel = (0, 0 + 500) #(GRID_WIDTH // 2, GRID_HEIGHT // 2)
 array_colors[init_pixel[0]][init_pixel[1]] = [255, 255, 255]  # Initialize with a starting pixel
 
 # Screen setup
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+# screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption('Grid Activation Visualization')
 
 def check_proximity(curr_pos):
@@ -37,19 +38,13 @@ def check_proximity(curr_pos):
 
 def toggle_cellblue(probability, pos):
     x, y = pos
-    if x >=GRID_WIDTH:
-        x = 0
-    if y >= GRID_HEIGHT:
-        y = 0
     if 0 <= x < GRID_WIDTH and 0 <= y < GRID_HEIGHT:
         if random.random() < probability:
             # Activate, ensuring RGB values stay within valid range
-            array_colors[x][y][1] = min(array_colors[x][y][1] + 50, 255)
             array_colors[x][y][2] = min(array_colors[x][y][2] + 50, 255)
-            
         else:
             # Deactivate or dim down the RGB values
-            array_colors[x][y][0] = max(array_colors[x][y][1] - 5, 0)
+            array_colors[x][y][2] = max(array_colors[x][y][2] - 5, 0)
 def toggle_cellred(probability, pos):
     x, y = pos
     if x >=GRID_WIDTH:
@@ -134,6 +129,9 @@ while running:
             running = False
             pygame.quit()
             sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:  # Check if the Escape key is pressed
+                running = False
     
     iterate_function()  # Update the grid
     draw_grid()  # Draw the updated grid

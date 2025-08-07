@@ -1,4 +1,4 @@
-
+package JavaParticleCollisionSimulations;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
@@ -367,18 +367,18 @@ public class ExperimentalSimulationRunner extends Canvas{
             int posX = (int) (objects.get(i).currposex - radiusValue);
             int posY = (int) (objects.get(i).currposey - radiusValue);
 
-            //offscreenGraphics.fillOval(posX, posY, 2 * radiusValue, 2 * radiusValue);
+            offscreenGraphics.fillOval(posX, posY, 2 * radiusValue, 2 * radiusValue);
 
             // Draw object information as text
 
-            ArrayList<Integer> collided = objects.get(i).getCollided();
-            for (int j = 0; j < collided.size(); j++) {
-                int k = collided.get(j);
-                offscreenGraphics.drawLine((int) (objects.get(i).currposex - radius.get(i)),
-                                        (int) (objects.get(i).currposey - radius.get(i)),
-                                        (int) (objects.get(k).currposex - radius.get(k)),
-                                        (int) (objects.get(k).currposey - radius.get(k)));
-            }
+            // ArrayList<Integer> collided = objects.get(i).getCollided();
+            // for (int j = 0; j < collided.size(); j++) {
+            //     int k = collided.get(j);
+            //     offscreenGraphics.drawLine((int) (objects.get(i).currposex - radius.get(i)),
+            //                             (int) (objects.get(i).currposey - radius.get(i)),
+            //                             (int) (objects.get(k).currposex - radius.get(k)),
+            //                             (int) (objects.get(k).currposey - radius.get(k)));
+            // }
         }
 
         // Draw additional text (example: number of objects)

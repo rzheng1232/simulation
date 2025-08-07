@@ -1,3 +1,4 @@
+package JavaParticleCollisionSimulations;
 import java.math.*;
 import java.awt.*;
 import java.util.*;
